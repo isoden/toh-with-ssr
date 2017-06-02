@@ -18,7 +18,9 @@ import { HeroSearchComponent }  from './hero-search.component';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({
+      appId: 'toh-universal',
+    }),
     FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
