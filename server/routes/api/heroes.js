@@ -1,5 +1,5 @@
 const express = require('express')
-const router = express.Router()
+const router  = express.Router()
 
 const nextId = function* () {
   let id = 20
@@ -9,6 +9,8 @@ const nextId = function* () {
 }()
 
 const findById = id => hero => hero.id === id
+
+const escapeRegExp = string => string.replace(/([.*+?^=!:${}()|[\]\/\\])/g, "\\$1")
 
 const heroes = [
   { id: 11, name: "Mr. Nice" },
@@ -31,7 +33,9 @@ router.get('/', (req, res, next) => {
     res.json(heroes)
   }
 
-  res.json(heroes.filter(hero => hero.name.toLowerCase().includes(name.toLowerCase())))
+  const nameMatcher = new RegExp(escapeRegExp(name), 'i')
+
+  res.json(heroes.filter(hero => nameMatcher.test(hero.name)))
 })
 
 router.get('/:id', (req, res, next) => {
@@ -89,8 +93,9 @@ router.delete('/:id', (req, res, next) => {
     return res.status(404).send('Hero not found')
   }
 
-  const removed = heroes.splice(index, 1)
-  return res.json(removed)
+  heroes.splice(index, 1)
+
+  return res.status(204).send()
 })
 
 module.exports = router
