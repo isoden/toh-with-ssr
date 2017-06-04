@@ -18,11 +18,12 @@
     "build:aot": "webpack --config webpack.config.aot.js",
     "serve:aot": "lite-server -c=bs-config.aot.js",
     "build:uni": "webpack --config webpack.config.uni.js",
-    "serve:uni": "node src/dist/server.js",
+    "serve:uni": "concurrently \"npm run serve:api\" \"node src/dist/server.js\"",
     "build:babel": "babel src -d src --extensions \".es6\" --source-maps",
     "copy-dist-files": "node ./copy-dist-files.js",
     "i18n": "ng-xi18n",
-    "lint": "tslint ./src/**/*.ts -t verbose"
+    "lint": "tslint ./src/**/*.ts -t verbose",
+    "serve:api": "node bin/www"
   },
   "keywords": [],
   "author": "",
@@ -41,8 +42,12 @@
     "@angular/router": "~4.0.0",
     "@angular/tsc-wrapped": "~4.0.0",
     "@angular/upgrade": "~4.0.0",
-    "angular-in-memory-web-api": "~0.3.1",
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
     "core-js": "^2.4.1",
+    "cors": "^2.8.3",
+    "debug": "^2.6.8",
+    "morgan": "^1.8.2",
     "rxjs": "5.0.1",
     "systemjs": "0.19.39",
     "zone.js": "^0.8.4"
