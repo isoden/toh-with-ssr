@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    console.log('DashboardComponent#ngOnInit');
     this.route.data.subscribe((data: { heroes: Hero[] }) => {
       this.heroes = data.heroes;
     });

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { HeroSearchComponent } from '../hero-search/hero-search.component';
 import { DashboardResolver } from './dashboard.resolver';
+import { DashboardGuard } from './dashboard.guard';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { DashboardResolver } from './dashboard.resolver';
     HeroSearchComponent,
   ],
   providers: [
+    DashboardGuard,
     DashboardResolver,
   ],
   imports: [
@@ -22,6 +24,7 @@ import { DashboardResolver } from './dashboard.resolver';
         resolve  : {
           heroes: DashboardResolver,
         },
+        canActivate: [DashboardGuard],
         component: DashboardComponent,
       }
     ])

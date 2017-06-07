@@ -1,4 +1,7 @@
-import { Component }          from '@angular/core';
+import { Component, ApplicationRef } from '@angular/core';
+
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/first';
 
 @Component({
   selector: 'my-app',
@@ -7,4 +10,11 @@ import { Component }          from '@angular/core';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
+
+  constructor(applicationRef: ApplicationRef) {
+    applicationRef.isStable
+      .filter(isStable => isStable)
+      .first()
+      .subscribe(() => console.log('application is stable'));
+  }
 }

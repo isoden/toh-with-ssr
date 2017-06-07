@@ -23,6 +23,7 @@ export function ngUniversalEngine(setupOptions: any) {
       document: templateCache[filePath],
       url: url
     }).then(str => {
+      console.log('rendered document');
       outputCache[url] = str;
       callback(null, str);
     });
