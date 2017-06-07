@@ -12,6 +12,8 @@ const findById = id => hero => hero.id === id
 
 const escapeRegExp = string => string.replace(/([.*+?^=!:${}()|[\]\/\\])/g, "\\$1")
 
+const sleep = delay => new Promise(resolve => setTimeout(resolve, delay))
+
 const heroes = [
   { id: 11, name: "Mr. Nice" },
   { id: 12, name: "Narco" },
@@ -26,15 +28,17 @@ const heroes = [
 ]
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
+router.get('/', async function (req, res, next) {
   const { name } = req.query
 
   if (typeof name === 'undefined') {
-    res.json(heroes)
+    await sleep(5000)
+    return res.json(heroes)
   }
 
   const nameMatcher = new RegExp(escapeRegExp(name), 'i')
 
+  await sleep(5000)
   res.json(heroes.filter(hero => nameMatcher.test(hero.name)))
 })
 
