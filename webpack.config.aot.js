@@ -9,7 +9,6 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js']
     },
-    target: 'node',
     output: {
         path: __dirname + '/src/dist',
         filename: 'build.js'

@@ -6,11 +6,7 @@ import { HttpModule }    from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard/dashboard.component';
-import { HeroesComponent }      from './heroes/heroes.component';
-import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
 import { HeroService }          from './hero.service';
-import { HeroSearchComponent }  from './hero-search/hero-search.component';
 
 @NgModule({
   imports: [
@@ -19,14 +15,10 @@ import { HeroSearchComponent }  from './hero-search/hero-search.component';
     }),
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
-    HeroDetailComponent,
-    HeroesComponent,
-    HeroSearchComponent
   ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ]

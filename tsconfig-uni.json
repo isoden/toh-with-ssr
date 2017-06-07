@@ -15,6 +15,11 @@
         "src/uni/app.server.ts",
         "src/uni/server-aot.ts"
     ],
+    "include": [
+        "src/app/dashboard/dashboard.module.ts",
+        "src/app/hero-detail/hero-detail.module.ts",
+        "src/app/heroes/heroes.module.ts"
+    ],
     "angularCompilerOptions": {
         "genDir": "aot",
         "entryModule": "./src/app/app.module#AppModule",
